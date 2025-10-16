@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity //Diz ao JPA/Hibernate que a classe Tema é uma entidade, ou seja, será mapeada para uma tabela no banco de dados
@@ -24,6 +25,7 @@ public class Tema {
 	private Long id;  //Hibernate gera o valor; Long corresponde bem ao BIGINT no banco
 	
 	@Column(length = 200)
+	@NotBlank(message = "O atributo descrição é obrigatório!")
 	@Size(min = 10, max = 300, message = "O atributo descrição deve conter no mínimo 10 e no máximo 200 caracteres")
 	
 	private String descricao;
